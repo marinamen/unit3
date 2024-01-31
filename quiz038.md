@@ -47,3 +47,9 @@ print(text.generate_map())
 
 <img src="https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-01-31%20at%2023.20.30.png" width=50% height=50%>
 
+
+#uml diagram　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-01%20at%2000.25.49.png)
