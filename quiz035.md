@@ -28,13 +28,7 @@ def mystery(list1: list, list2: list) -> list:
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/CS2023/blob/main/unit%202/quizzes/pictures/Screenshot%202023-11-18%20at%2014.14.57.png)
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-01-31%20at%2023.07.51.png)
 
 
-        output = ""
-        if 0 < decimal < 400:
-            for key, value in self.roman_symbols.items():
-                q = decimal // key
-                output += value * q
-                decimal %= key
-        return output
+
