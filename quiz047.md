@@ -1,111 +1,42 @@
-**QUIZ 042** 
+**QUIZ 047** 
 
 ✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 
-42. Write a program that creates the GUI described by the UML diagram for classes below:
+47. Use the database bitcoin_exchange.db: and create a program that check the hash signature stored for every transaction and prints:
 
 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 **python code**
 ```.py
-from kivymd.app import MDApp
-from kivy.core.window import Window
-from kivymd.uix.screen import MDScreen
+import sqlite3
+from my_lib import DatabaseWorker
+from passlib.hash import sha256_crypt
 
+hasher = sha256_crypt.using(rounds=30000)
 
-class MysteryScreenA(MDScreen):
-    pass
+def checkPass(hashedSign, userSign):
+    return hasher.verify(userSign, hashedSign)
 
+m = DatabaseWorker("bitcoin_exchange.db")
+query = """SELECT * from ledger"""
+text = m.search_query(query,multiple=True)
+m.close()
 
-class MysteryScreenB(MDScreen):
-    pass
-
-
-class Quiz42Screen(MDApp):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    def build(self):
-        return
-
-
-text = Quiz42Screen()
-text.run()
-
-```
-
-**kivy code**
-
-
-```.py
-
-ScreenManager:
-    MysteryScreenA:
-        name:"MysteryA"
-    MysteryScreenB:
-        name:"MysteryB"
-
-
-
-
-<MysteryScreenA>:
-    MDCard:
-        md_bg_color:"#AADD99"
-        size_hint:.7,.7
-        pos_hint:{"center_x":.5,"center_y":.5}
-        orientation:"vertical"
-        MDLabel:
-            text:"welcome to mystery page A"
-            size_hint:1,.1
-            halign:"center"
-            valign:"center"
-        MDBoxLayout:
-            MDLabel:
-                size_hint:.2,.1
-            MDRaisedButton:
-                size_hint:.2,.1
-                text:"go to mystery page"
-                md_bg_color:"purple"
-                on_release:
-                    root.parent.current="MysteryB"
-            MDLabel:
-                size_hint:.2,.1
-
-<MysteryScreenB>:
-    MDCard:
-        md_bg_color:"pink"
-        style:"elevated"
-        size_hint:.7,.7
-        pos_hint:{"center_x":.5,"center_y":.5}
-
-        orientation:"vertical"
-        MDLabel:
-            text:"welcome to mystery page B"
-            size_hint:1,.01
-            halign:"center"
-            valign:"center"
-        MDBoxLayout:
-            MDLabel:
-                size_hint:.2,.1
-            MDRaisedButton:
-                size_hint:.2,.1
-                pos_hint_x:"center"
-                text:"Go to page A"
-                md_bg_color:"purple"
-                on_release:
-                    root.parent.current="MysteryA"
-            MDLabel:
-                size_hint:.2,.1
-
+for r in text:
+    id, sender_id, receiver_id, amount, signature = r[0], r[1], r[2], r[3], r[4]
+    hashString=f"id {id},sender_id {sender_id},receiver_id {receiver_id},amount {amount}"
+    true=checkPass(hashedSign = signature, userSign = hashString)
+    if true is True:
+        print(f"Tx {id}, Signature Matches")
+    else:
+        print(f"Tx {id}, Error Signature")
 
 
 ```
-#test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+
+#proof of work　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/unit3/blob/main/images/42-ezgif.com-video-to-gif-converter.gif)
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-17%20at%2014.37.58.png)
 
-#uml diagram　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
-　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
-![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-01%20at%2000.50.21.png)
