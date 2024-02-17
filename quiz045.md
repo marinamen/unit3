@@ -1,3 +1,12 @@
+**QUIZ 045** 
+
+✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+
+45. A company requires a program that calculates the average word length from a database of words. Complete the following code:
+
+
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+**python code**
 
 ```.py
 import sqlite3
@@ -33,3 +42,7 @@ print(f"The average word length {cursor.fetchone()}")
 
 connection.close()
 ```
+**proof of work**　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-16%20at%2016.38.54.png)
