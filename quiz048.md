@@ -1,111 +1,69 @@
-**QUIZ 042** 
+**QUIZ 048** 
 
 ✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 
-42. Write a program that creates the GUI described by the UML diagram for classes below:
+48. Use the database bitcoin_exchange.db: and create a program that calculates the total amount of bitcoins transferred for only those transactions that are valid:
 
 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
 **python code**
 ```.py
-from kivymd.app import MDApp
-from kivy.core.window import Window
-from kivymd.uix.screen import MDScreen
+import sqlite3
+from passlib.hash import sha256_crypt
+hasher = sha256_crypt.using(rounds=3000)
 
 
-class MysteryScreenA(MDScreen):
-    pass
+def encrypt(user_passowrd):
+    return hasher.encrypt(user_passowrd)
 
 
-class MysteryScreenB(MDScreen):
-    pass
+def check(hashed_password, user_password):
+    return hasher.verify(user_password, hashed_password)
 
 
-class Quiz42Screen(MDApp):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+class database_worker:
+    def __init__(self, name):
+        self.connection = sqlite3.connect(name)
+        self.cursor = self.connection.cursor()
 
-    def build(self):
-        return
+    def search(self, query):
+        result = self.cursor.execute(query).fetchall()
+        return result
 
+    def run_save(self, query):
+        self.cursor.execute(query)
+        self.connection.commit()
 
-text = Quiz42Screen()
-text.run()
-
-```
-
-**kivy code**
-
-
-```.py
-
-ScreenManager:
-    MysteryScreenA:
-        name:"MysteryA"
-    MysteryScreenB:
-        name:"MysteryB"
+    def close(self):
+        self.connection.close()
 
 
+m = database_worker("bitcoin_exchange.db")
+query = "SELECT * from ledger"
+result = m.search(query)
 
-
-<MysteryScreenA>:
-    MDCard:
-        md_bg_color:"#AADD99"
-        size_hint:.7,.7
-        pos_hint:{"center_x":.5,"center_y":.5}
-        orientation:"vertical"
-        MDLabel:
-            text:"welcome to mystery page A"
-            size_hint:1,.1
-            halign:"center"
-            valign:"center"
-        MDBoxLayout:
-            MDLabel:
-                size_hint:.2,.1
-            MDRaisedButton:
-                size_hint:.2,.1
-                text:"go to mystery page"
-                md_bg_color:"purple"
-                on_release:
-                    root.parent.current="MysteryB"
-            MDLabel:
-                size_hint:.2,.1
-
-<MysteryScreenB>:
-    MDCard:
-        md_bg_color:"pink"
-        style:"elevated"
-        size_hint:.7,.7
-        pos_hint:{"center_x":.5,"center_y":.5}
-
-        orientation:"vertical"
-        MDLabel:
-            text:"welcome to mystery page B"
-            size_hint:1,.01
-            halign:"center"
-            valign:"center"
-        MDBoxLayout:
-            MDLabel:
-                size_hint:.2,.1
-            MDRaisedButton:
-                size_hint:.2,.1
-                pos_hint_x:"center"
-                text:"Go to page A"
-                md_bg_color:"purple"
-                on_release:
-                    root.parent.current="MysteryA"
-            MDLabel:
-                size_hint:.2,.1
-
+m.close()
+bitcoin_amount=0
+for row in result:
+    id= row[0]
+    sender_id=row[1]
+    receiver_id=row[2]
+    amount=row[3]
+    hash=row[4]
+    string_hash=f"id {id},sender_id {sender_id},receiver_id {receiver_id},amount {amount}"
+    equal=check(hashed_password = hash, user_password = string_hash)
+    if equal is False:
+        print(f"{id} Error signature")
+    else:
+        print(f"{id} Signature correct")
+        bitcoin_amount+=amount
+print(f"total amount of bt is {bitcoin_amount} BTC")
 
 
 ```
 #test　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/unit3/blob/main/images/42-ezgif.com-video-to-gif-converter.gif)
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-17%20at%2014.20.57.png)
 
-#uml diagram　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
-　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
-![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-01%20at%2000.50.21.png)
