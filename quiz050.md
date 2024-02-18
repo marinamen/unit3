@@ -1,5 +1,15 @@
-```.py
 
+**QUIZ 050** 
+
+✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+
+50. Create a class for a flight:
+
+
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+**python code**
+
+```.py
 class flight():
     def __init__(self, flight_number, origin, destination, departure_time, duration):
         self.flight = flight_number
@@ -22,3 +32,7 @@ print(m.get_duration(duration = r.duration,destination=r.destination))
 
 print(r.get_duration(duration = m.duration,destination=m.destination))
 ```
+**proof of work**　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-19%20at%2008.38.22.png)
