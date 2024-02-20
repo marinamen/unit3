@@ -39,5 +39,5 @@ print(x.search(query, True))
 #er diagram　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-20%20at%2011.24.26.png)
+![](https://github.com/marinamen/unit3/blob/main/images/Untitled%20(1).jpg)
 
