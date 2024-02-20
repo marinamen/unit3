@@ -2,7 +2,7 @@
 
 ✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 
-49.
+49. In the database bitcoin_exchange.db: create a new table for the users, which attributes id, name, email. This table has a one-to-many relationship with the ledger in two columns (sender and receiver). Add users for all the ids in the ledger table.
 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
@@ -34,5 +34,10 @@ print(x.search(query, True))
 #proof of work　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
 　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
 
-![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-17%20at%2014.37.58.png)
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-20%20at%2011.24.26.png)
+
+#er diagram　　✦　　　.　　. 　 ˚　.　　　　　 . ✦　　　 　˚　　　　 . ★⋆. ࿐࿔ 
+　　　.   　　˚　　 　　*　　 　　✦　　　.　　.　　　✦　˚ 　　　　 ˚　.˚　　　　✦
+
+![](https://github.com/marinamen/unit3/blob/main/images/Screenshot%202024-02-20%20at%2011.24.26.png)
 
